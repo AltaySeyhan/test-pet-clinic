@@ -146,6 +146,10 @@ class OwnerControllerTests {
 
 	@Test
 	void testProcessCreationFormHasErrors() throws Exception {
+		if (Math.random() < 0.3) {
+			throw new AssertionError("Flaky test failure for testing purposes");
+		}
+
 		mockMvc
 			.perform(post("/owners/new").param("firstName", "Joe").param("lastName", "Bloggs").param("city", "London"))
 			.andExpect(status().isOk())
